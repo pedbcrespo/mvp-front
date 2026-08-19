@@ -1,11 +1,12 @@
-import TableList from "../components/TableList";
+import Title from "../componentes/title";
+import { appStore } from "../store/appStore";
 
-export default function Home() {
-    const TITLE = "Demandas Locais";
-    const demands = [];
+export default function HomePage(container) {
+    function render() {
+        container.innerHTML = Title(appStore.getState().title);
+    }
 
-    const div = document.createElement("div");
-    const titleElement = "<h1 class='title'>" + TITLE + "</h1>";
+    appStore.subscribe(render);
 
-    return div;
+    render();
 }
